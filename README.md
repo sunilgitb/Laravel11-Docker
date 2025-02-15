@@ -35,6 +35,30 @@ DB_USERNAME=root
 DB_PASSWORD=root
 ```
 
+# Access the Laravel container
+docker exec -it laravel_app bash
+
+# Install Laravel dependencies
+composer install
+
+# Install Node.js dependencies
+npm install
+
+# Build front-end assets
+npm run dev
+
+# Run Laravel migrations
+php artisan migrate
+
+# Stop containers
+docker-compose down
+
+# View logs
+docker-compose logs -f
+
+# Rebuild with cache cleared
+docker-compose build --no-cache
+
 ## 3. Start Docker Containers
 ```bash
 docker-compose up -d
