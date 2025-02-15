@@ -17,8 +17,8 @@ This guide will walk you through setting up, running, and managing a Laravel app
 
 ## 1. Clone the Repository
 ```bash
-git clone https://github.com/your-repo/laravel-app.git
-cd laravel-app
+git clone https://github.com/sunilgitb/Laravel11-Docker.git
+cd Laravel11-Docker
 ```
 
 ## 2. Create Environment File
@@ -60,6 +60,12 @@ docker-compose exec app php artisan migrate
 - **Stop Containers:** `docker-compose down`
 - **Restart Containers:** `docker-compose restart`
 - **Access App Container:** `docker-compose exec app bash`
+
+Permission Issues:
+docker compose exec app npm run build
+docker compose exec app chown -R www-data:www-data storage
+docker compose exec app chmod -R 775 storage
+
 
 ## Troubleshooting
 - If you encounter a Vite manifest error:
