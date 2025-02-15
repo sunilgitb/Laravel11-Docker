@@ -7,6 +7,87 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+# Laravel with Docker Setup Guide
+
+This guide will walk you through setting up, running, and managing a Laravel application using Docker.
+
+## Prerequisites
+- Docker installed
+- Docker Compose installed
+
+## 1. Clone the Repository
+```bash
+git clone https://github.com/your-repo/laravel-app.git
+cd laravel-app
+```
+
+## 2. Create Environment File
+```bash
+cp .env.example .env
+```
+Configure the database credentials in the `.env` file to match Docker services:
+```bash
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+
+## 3. Start Docker Containers
+```bash
+docker-compose up -d
+```
+
+## 4. Install Dependencies
+```bash
+docker-compose exec app composer install
+docker-compose exec app npm install
+docker-compose exec app npm run build
+```
+
+## 5. Run Migrations
+```bash
+docker-compose exec app php artisan migrate
+```
+
+## 6. Access the Application
+- Laravel App: [http://localhost:8000](http://localhost:8000)
+- phpMyAdmin: [http://localhost:8080](http://localhost:8080)
+
+## 7. Common Commands
+- **Stop Containers:** `docker-compose down`
+- **Restart Containers:** `docker-compose restart`
+- **Access App Container:** `docker-compose exec app bash`
+
+## Troubleshooting
+- If you encounter a Vite manifest error:
+  ```bash
+  docker-compose exec app npm run build
+  ```
+- If database connection fails, verify `DB_HOST` in `.env` matches the service name in `docker-compose.yml`.
+
+## Directory Structure
+```
+laravel-app/
+    ├── app/
+    ├── bootstrap/
+    ├── config/
+    ├── database/
+    ├── public/
+    ├── resources/
+    ├── routes/
+    ├── storage/
+    ├── tests/
+    ├── docker-compose.yml
+    ├── Dockerfile
+    └── .env
+```
+
+
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
