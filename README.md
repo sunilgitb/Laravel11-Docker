@@ -59,6 +59,13 @@ docker-compose logs -f
 # Rebuild with cache cleared
 docker-compose build --no-cache
 
+## 2. Access Database Container
+```bash
+docker exec -it laravel_db bash
+```
+docker exec -it laravel_db mysql -u root -p
+
+
 ## 3. Start Docker Containers
 ```bash
 docker-compose up -d
